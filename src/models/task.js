@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const taskSchema = new mongoose.Schema(
   {
@@ -17,7 +17,7 @@ const taskSchema = new mongoose.Schema(
       // you must provide an owner for the task
       required: true,
       // ref is short for reference to another model
-      ref: "User",
+      ref: 'User',
     },
   },
   {
@@ -26,6 +26,6 @@ const taskSchema = new mongoose.Schema(
 );
 
 // Create the task model
-const Task = mongoose.model("Task", taskSchema);
+const Task = mongoose.model('Task', taskSchema);
 
 export { Task };

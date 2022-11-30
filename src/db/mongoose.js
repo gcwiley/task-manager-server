@@ -1,9 +1,18 @@
 import mongoose from 'mongoose';
+import process from 'process';
 
-// connect to the Mongo Database
-export const connection = mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
+const connectionOptions = {
   useNewUrlParser: true,
-  useCreateIndex: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
-});
+};
+
+// opens Mongoose's default connection to MongoDB
+// connection method returns a promise
+mongoose
+  .connect(`mongodb://127.0.0.1:27017/${process.env.DATABASE_NAME}`, connectionOptions)
+  .then(() => {
+    console.log('Connected to database');
+  })
+  .catch((error) => {
+    console.error('Unable to connect to database', error);
+  });

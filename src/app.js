@@ -1,5 +1,5 @@
 import path from 'path';
-import 
+import process from 'process';
 import express from 'express';
 import logger from 'morgan';
 import * as dotenv from 'dotenv';
@@ -7,7 +7,10 @@ import * as dotenv from 'dotenv';
 // load environmental variables
 dotenv.config();
 
-const __dirname = path.resolve()
+const __dirname = path.resolve();
+
+// import the connection to mongo database
+import './db/mongoose.js';
 
 // Import Routes
 import { userRouter } from './routers/user.js';
