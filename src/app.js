@@ -9,9 +9,6 @@ dotenv.config();
 
 const __dirname = path.resolve();
 
-// import the connection to mongo database
-import './db/mongoose.js';
-
 // Import Routes
 import { userRouter } from './routers/user.js';
 import { taskRouter } from './routers/task.js';

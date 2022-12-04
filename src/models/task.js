@@ -1,31 +1,16 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
 
-const taskSchema = new mongoose.Schema(
-  {
-    description: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    completed: {
-      type: Boolean,
-      default: false,
-    },
-    owner: {
-      // data stored in owner is going to be a ObjectID
-      type: mongoose.Schema.Types.ObjectId,
-      // you must provide an owner for the task
-      required: true,
-      // ref is short for reference to another model
-      ref: 'User',
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+// import the sequelized instance
+import { sequelize } from '../db/db.js';
 
-// Create the task model
-const Task = mongoose.model('Task', taskSchema);
+const Task = sequelize.define('task', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+    }
+});
 
+// export the task model
 export { Task };
